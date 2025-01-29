@@ -20,16 +20,16 @@ export default function Main() {
     // toggle background
     const [theme, setTheme] = useState(false)
     let backgroudChange = theme ? toggleOn : toogle_off
-    const changeBackground = () => setTheme(preTheme => !preTheme)
+    const changeBackground = () => setTheme(!theme)
   return (
-    <main className={backgroudChange ? "darkMode" : "lightMode"}>
+    <main className={theme ? "darkMode" : "lightMode"}>
         <header>
             <h1>Where is the World</h1>
             <div className="Mode">
                 <button onClick={changeBackground}>
                     <img src={backgroudChange} alt="icon" width={50} />
                 </button>
-                <span>{backgroudChange ? "darkMode" : "lightMode"}</span>
+                <span>{theme ? "darkMode" : "lightMode"}</span>
             </div>
         </header>
         <section className='container'>
