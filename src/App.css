@@ -1,0 +1,192 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+h1,h2 {
+  font-size: 1.3rem;
+}
+.darkMode {
+  background-color: hsl(207, 26%, 17%);
+  color:  hsl(207, 42%, 90%) ;
+}
+.lightMode {
+ background-color:  hsl(0, 0%, 98%);
+ color : hsl(200, 15%, 8%)
+}
+/* input .darkMode {
+  background-color: hsl(0, 0%, 52%) ;
+} */
+
+header {
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  padding: 1.2em 2em 1.2em 2em;
+  box-shadow: 0px 2px 3px 2px rgba(0, 0, 0, 0.15);
+}
+
+.Mode button {
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  vertical-align: middle;
+}
+.Mode span {
+  font-size: 1.3rem;
+  margin: 5px;
+}
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.9em;
+  padding: 1.2em 2em 1.2em 2em;
+}
+form{
+  box-shadow:0px 2px 3px 2px rgba(0, 0, 0, 0.15) ;
+  border-radius: 7px;
+  padding: 10px;
+  margin: 10px;
+}
+form input {
+  border: none;
+  background-color: transparent;
+  padding: 10px;
+  margin: 0px;
+  text-align: justify;
+  width: 300px;
+}
+
+form .searchInput  {
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  margin: 5px;
+}
+.filter {
+  background-color: aqua;
+  position: relative;
+}
+.filter-btn {
+  border: none;
+  cursor: pointer;
+}
+.regions a {
+  /* display: block; */
+  /* visibility: hidden; */
+  display: none;
+  /* position: absolute; */
+}
+.filter:hover .regions a {
+  display: block;
+  /* position: absolute; */
+  /* position: fixed; */
+  /* z-index: 1; */
+}
+.filter .filter-btn span {
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 0;
+}
+.lightMode .filter .filter-btn {
+  background-color:  hsl(0, 0%, 98%);
+  color : hsl(200, 15%, 8%);
+  box-shadow:0px 2px 3px 2px rgba(0, 0, 0, 0.15) ;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+  margin: 0;
+  cursor: pointer;
+}
+.lightMode .filter .regions  {
+  box-shadow:0px 2px 3px 2px rgba(0, 0, 0, 0.15) ;
+  margin-top: 0.2em;
+  border-radius: 5px;
+  width: 190px;
+  display: none;
+  cursor: pointer;
+  background-color:  hsl(0, 0%, 98%);
+}
+.lightMode .filter .regions a {
+  display: block;
+  text-align: left;
+  padding: 5px;
+  cursor: pointer;
+  font-size: 1.3rem;
+  color : hsl(200, 15%, 8%);
+}
+
+.darkMode .filter .filter-btn {
+  background-color:   hsl(207, 26%, 17%);
+  color :  hsl(207, 42%, 90%) ; 
+  box-shadow:0px 2px 3px 2px rgba(0, 0, 0, 0.15) ;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+  margin: 0;
+  cursor: pointer;
+}
+.darkMode .filter .regions  {
+  box-shadow:0px 2px 3px 2px rgba(0, 0, 0, 0.15) ;
+  margin-top: 0.2em;
+  border-radius: 5px;
+  width: 190px;
+  display: none;
+  cursor: pointer;
+  background-color:hsl(207, 26%, 17%)  ;
+}
+.darkMode .filter .regions a {
+  display: block;
+  text-align: left;
+  padding: 5px;
+  cursor: pointer;
+  font-size: 1.3rem;
+  color :  hsl(207, 42%, 90%) ;
+}
+.filter .filter-btn svg {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 5px;
+}
+
+.countries {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin: 15px 0px 15px 0px;
+}
+.ListCountry {
+  box-shadow: 0px 2px 3px 2px rgba(0, 0, 0, 0.15);
+}
+.ListCountry img {
+  width: 300px;
+  object-fit: fill;
+}
+.country-info{
+  padding: 10px;
+}
+.country-info p {
+  padding: 5px;
+}
+/* Responsive design */
+/* mobile view */
+@media screen and (max-width: 900px) {
+ 
+  .container {
+      flex-direction: column;
+      align-items: baseline;
+      /* margin-top: 1.9em; */
+  }
+  .filter  {
+      margin-top: 1em;
+  }
+ 
+}
