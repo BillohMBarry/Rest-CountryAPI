@@ -1,5 +1,5 @@
-import toggleOn from '../components/images/toggle_on.png'
-import toogle_off from '../components/images/toggle_off.png'
+import toggleOn from '../assets/toggle_on.png'
+import toogle_off from '../assets/toggle_off.png'
 export default function Header({theme, changeBackground}) {
   let backgroudChange = theme ? toggleOn : toogle_off
    

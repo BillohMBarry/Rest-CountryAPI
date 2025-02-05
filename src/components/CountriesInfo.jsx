@@ -1,8 +1,8 @@
 import Header from "./Header"
 import {Link, Outlet, useParams } from "react-router-dom"
 export default function CountriesInfo() {
-  
-
+  const {details} = useParams(names)
+  console.log(details)
   return (
     
       <>

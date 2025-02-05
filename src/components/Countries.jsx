@@ -5,7 +5,7 @@ export default function Countries(props) {
   return (
     <>
       <div className="ListCountry">
-        <Link to='/:country'>
+        <Link to={props.names}>
           <img src={props.countryFlag} alt="flag" />
           <div className="country-info">
             <h1>{props.countryName}</h1>
