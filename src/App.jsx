@@ -14,6 +14,7 @@ function App() {
       <Header theme={theme} changeBackground={changeBackground}/>
       <BrowserRouter>
         <Routes>
+          <Route path='/' element={<Home />} />
           <Route path='/Home' element={<Home />} />
           <Route path="/country/:name" element={<CountriesInfo />} />
         </Routes>
