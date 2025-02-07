@@ -1,45 +1,38 @@
-
-import Header from './Header'
-import Countries from './Countries'
+import { nanoid } from "nanoid"
 import SearchCountry from './SearchCountry'
-import  data  from './data.json'
-import { nanoid } from 'nanoid'
-import { useState } from 'react'
+import { APIurl } from "./Config/config"
+import { useState, useEffect } from 'react'
+import { Link } from "react-router-dom"
 
 export default function Home() {
-    const [country, setCountry] = useState(data)
-       // toggle background
-  const [theme, setTheme] = useState(false)
-  function changeBackground() {
-    setTheme(pretheme => !pretheme)
- }
-    
-    const getCountries = country.map(con => (
-        <>
-            <Countries
-            // some countries return undefine
-            // handling the undefined value with the optional chaining and nullish coalescing operation 
-            // to return an empty array instead of undefined
-            key={nanoid()}
-            countryFlag={con.flags.png}
-            countryName={con.name}
-            Population={con.population}
-            Region={con.region}
-            Capital={con?.capital ?? []}
-        
-            />
-        </>
-    )) 
-  
+    const [country, setCountry] = useState([])
+    useEffect(() => {
+        fetch(`${APIurl}/all?fields=flags,name,capital,population,continents`)
+            .then(res => res.json())
+            .then(data => setCountry(data))
+    },[])
+    console.log(country)
   return (
-    <main className={theme ? 'darkMode' : 'lightMode'}>
-        <Header theme={theme} changeBackground={changeBackground}/>
+    <>
         <section className='container'>
-            <SearchCountry setCountry={setCountry}/>
+            <SearchCountry setCountry={setCountry} />
         </section>
         <div className="countries">
-            {getCountries}
+            {   country.map(con3 => (
+                    <div className="ListCountry" key={nanoid()}>
+                        <Link to={`/country/${con3.name.common}` } >
+                            <img src={con3.flags.png} alt="flag" />   
+                            <div className="country-info">
+                                <p>{`${con3.name.common}`}</p>
+                                <p>{`Population: ${con3.population}`}</p>
+                                <p>{`Region: ${con3.continents}`}</p>
+                                <p>{`Capital: ${con3.capital}`}</p>
+                            </div> 
+                        </Link>
+                    </div>
+                ))
+            }
         </div>
-    </main>
+    </>
   )
 }

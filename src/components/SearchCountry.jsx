@@ -1,16 +1,25 @@
-import React from 'react'
-import data from "./data.json"
-export default function SearchCountry(props) {
+import { useEffect, useState } from 'react'
+import { APIurl } from './Config/config'
+export default function SearchCountry({setCountry}) {
+    const [countries, setCountries] = useState([])
+    useEffect(() => {
+        fetch(`${APIurl}/all?fields=flags,name,capital,population,continents`)
+            .then(res => res.json())
+            .then(data => setCountries(data))
+    },[])
+    console.log(countries)
     // search Input
-    const seachInput = (event) => {
-        const search = event.target.value
-        const getNames = data.filter(con3_Names => con3_Names.name.toLowerCase().includes(search))
-       props.setCountry(getNames)
+    const searchInput = (event) => {
+        const search = event.target.value.toLowerCase()
+        const getNames = countries.filter(con3_Name => con3_Name.name.common.toLowerCase().includes(search))
+       setCountry(getNames)
+        console.log(getNames)
     }
     // filter
-    const filterCountry = (Region) => {
-        const filter = data.filter(getRegion => getRegion.region === Region)
-       props.setCountry(filter)
+    const filterCountry = (continents) => {
+        const filter = countries.filter(getRegion => getRegion.continents.includes(continents))
+        setCountry(filter)
+        console.log(filter)
     } 
   return (
     <>
@@ -20,22 +29,24 @@ export default function SearchCountry(props) {
                 </svg> 
             </button>
             <input type="text" 
-                placeholder='Search for a country'
+                placeholder='Search for a country eg sierra leone'
                 name='searchCountry'
-                onChange={seachInput}
+                onChange={searchInput}
             />
         </form>
         <div className="filter-dropdown">
-            <button className="filter-btn">
+            <div className="filter-btn">
                 Filter by Regions
                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M480-345 240-585l56-56 184 183 184-183 56 56-240 240Z"/></svg> 
-            </button>
+            </div>
             <div className="dropdown-regions">
                 <a href="#" className='regionlist' onClick={() => filterCountry('Africa')}>Africa</a>
                 <a href="#" className='regionlist' onClick={() => filterCountry('Asia')}>Asia</a>
-                <a href="#" className='regionlist' onClick={() => filterCountry('Americas')}>America</a>
                 <a href="#" className='regionlist' onClick={() => filterCountry('Europe')}>Europe</a>
                 <a href="#" className='regionlist' onClick={() => filterCountry('Oceania')}>Oceania</a>
+                <a href="#" className='regionlist' onClick={() => filterCountry('North America')}>North America</a>
+                <a href="#" className='regionlist' onClick={() => filterCountry('South America')}>South America</a>
+                <a href="#" className='regionlist' onClick={() => filterCountry('Antarctica')}>Antarctica</a>
             </div>
         </div>
     </>

@@ -23,7 +23,15 @@ h1,h2 {
 }
 .lightMode {
  background-color:  hsl(0, 0%, 98%);
- color : hsl(200, 15%, 8%)
+ color : hsl(200, 15%, 8%);
+}
+.lightMode a {
+  background-color:  hsl(0, 0%, 98%);
+  color : hsl(200, 15%, 8%);
+}
+.darkMode a {
+  background-color: hsl(207, 26%, 17%);
+  color:  hsl(207, 42%, 90%) ;
 }
 header {
   display: flex;
@@ -96,14 +104,13 @@ form .searchInput  {
   margin-top: 5px;
   box-shadow:  0px 2px 3px 2px rgba(0, 0, 0, 0.15); 
   border-radius: 10px;
- 
 }
 .dropdown-regions .regionlist {
   display: block;
   font-size: 1.3rem;
-  padding: 5px; 
-  color: white;
+  padding: 9px; 
 }
+
 .regionlist:hover {
   text-decoration: underline;
 }
@@ -116,17 +123,15 @@ form .searchInput  {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 30px;
+  gap: 15px;
   margin: 15px 0px 15px 0px;
 }
 .ListCountry {
   box-shadow: 0px 2px 3px 2px rgba(0, 0, 0, 0.15);
 }
-.ListCountry a {
-  color: black;
-}
 .ListCountry img {
   width: 300px;
+  height: 300px;
   object-fit: fill;
 }
 .country-info{
