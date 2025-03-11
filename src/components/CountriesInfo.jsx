@@ -1,9 +1,16 @@
-import {Link, Outlet , useParams} from "react-router-dom"
+import {Link,  useParams} from "react-router-dom"
+import { useState, useEffect } from "react"
+import data from '../components/data.json'
+
 export default function CountriesInfo() {
+ const {area} = useParams()
+ const [country, setCountry] = useState(null)
+ useEffect(() => {
+  const selectedCountry = data.find((item) => item.area === parseInt(area))
+  setCountry(selectedCountry)
+ }, [area])
   
-    const {name, population} = useParams()
-    console.log(name)
-  
+  // the page is routing but not rendering the country info
   return (
     
       <>
@@ -14,10 +21,13 @@ export default function CountriesInfo() {
             </svg>  
             Back
           </Link>
-          <h1>{`Country Name ${name}`}</h1>
-          <p>{`Country population ${population}`}</p>
+          {country && (
+            <div className="country-detail">
+              <h1>{country.name}</h1>
+              {/* <img src={country.flags.png} alt="flag"  width={500} height={300}/> */}
+            </div>
+          )}
         </section>
-        <Outlet />
       </>
   )
   

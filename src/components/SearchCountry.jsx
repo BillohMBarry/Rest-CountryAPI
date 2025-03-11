@@ -1,25 +1,19 @@
-import { useEffect, useState } from 'react'
-import { APIurl } from './Config/config'
+import {useState } from 'react'
+import data from '../components/data.json'
 export default function SearchCountry({setCountry}) {
-    const [countries, setCountries] = useState([])
-    useEffect(() => {
-        fetch(`${APIurl}/all?fields=flags,name,capital,population,continents`)
-            .then(res => res.json())
-            .then(data => setCountries(data))
-    },[])
-    console.log(countries)
+    const [searchCon3, setSearchCon3] = useState(data)
+  
     // search Input
     const searchInput = (event) => {
         const search = event.target.value.toLowerCase()
-        const getNames = countries.filter(con3_Name => con3_Name.name.common.toLowerCase().includes(search))
+        const getNames = searchCon3.filter(con3_Name => con3_Name.name.toLowerCase().includes(search))
        setCountry(getNames)
-        console.log(getNames)
     }
     // filter
-    const filterCountry = (continents) => {
-        const filter = countries.filter(getRegion => getRegion.continents.includes(continents))
+    const filterCountry = (regions) => {
+        const filter = searchCon3.filter(getRegion => getRegion.region.includes(regions))
         setCountry(filter)
-        console.log(filter)
+        
     } 
   return (
     <>
@@ -44,9 +38,8 @@ export default function SearchCountry({setCountry}) {
                 <a href="#" className='regionlist' onClick={() => filterCountry('Asia')}>Asia</a>
                 <a href="#" className='regionlist' onClick={() => filterCountry('Europe')}>Europe</a>
                 <a href="#" className='regionlist' onClick={() => filterCountry('Oceania')}>Oceania</a>
-                <a href="#" className='regionlist' onClick={() => filterCountry('North America')}>North America</a>
-                <a href="#" className='regionlist' onClick={() => filterCountry('South America')}>South America</a>
-                <a href="#" className='regionlist' onClick={() => filterCountry('Antarctica')}>Antarctica</a>
+                <a href="#" className='regionlist' onClick={() => filterCountry('Americas')}>Americas</a>
+                <a href="#" className='regionlist' onClick={() => filterCountry('Polar')}>Polar</a>
             </div>
         </div>
     </>
