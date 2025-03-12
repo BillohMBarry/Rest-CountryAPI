@@ -6,13 +6,17 @@
 }
 .back-btn {
   box-shadow:  0px 2px 3px 2px rgba(0, 0, 0, 0.15); 
-  padding: 10px;
-  text-align: center;
+  margin: 1.9em;
+  
+   text-align: center;
   width: 100px;
   border-radius: 5px;
+  padding: 0.9em;
+  border: none;
 }
 .back-btn svg {
   vertical-align: middle;
+  margin-right: 0.8em;
 }
 h1,h2 {
   font-size: 1.3rem;
@@ -30,6 +34,14 @@ h1,h2 {
   color : hsl(200, 15%, 8%);
 }
 .darkMode a {
+  background-color: hsl(207, 26%, 17%);
+  color:  hsl(207, 42%, 90%) ;
+}
+.lightMode .back-btn {
+  background-color:  hsl(0, 0%, 98%);
+  color : hsl(200, 15%, 8%);
+}
+.darkMode .back-btn {
   background-color: hsl(207, 26%, 17%);
   color:  hsl(207, 42%, 90%) ;
 }
@@ -140,6 +152,9 @@ form .searchInput  {
 .country-info p {
   padding: 5px;
 }
+/* .country-detail {
+  display: flex;
+} */
 /* Responsive design */
 /* mobile view */
 @media screen and (max-width: 900px) {
